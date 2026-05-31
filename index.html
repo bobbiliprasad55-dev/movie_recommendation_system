@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
+    <title>AUREON | Futuristic Luxury Cinematic Platform</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&family=Poppins:wght@300;400;500;600;700&family=Sora:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme">
+
+    <!-- Cinematic Preloader -->
+    <div id="preloader" class="preloader">
+        <div class="preloader-overlay"></div>
+        <div class="preloader-content">
+            <div class="preloader-halo-wrapper">
+                <div class="preloader-halo"></div>
+                <div class="preloader-disk"></div>
+            </div>
+            <h1 class="preloader-brand">AUREON</h1>
+            <div class="preloader-countdown-box">
+                <span class="countdown-label">CINEMATIC INIT</span>
+                <span id="countdown-timer" class="countdown-value">00:03</span>
+            </div>
+            <div class="preloader-bar">
+                <div class="preloader-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lens Flare Transition Flash -->
+    <div id="transition-flash" class="transition-flash"></div>
+
+    <!-- Ambient HTML5 Particle Canvas -->
+    <canvas id="ambient-canvas"></canvas>
+
+    <!-- Ambient Floating Zero-Gravity Halo Orbs & Rings (Cinematic background depth) -->
+    <div class="gravity-orbs-container">
+        <div class="gravity-orb orb-gold-large levitate"></div>
+        <div class="gravity-orb orb-gold-small levitate-fast"></div>
+        <div class="gravity-ring ring-large"></div>
+        <div class="gravity-ring ring-small"></div>
+    </div>
+
+    <!-- Main Container -->
+    <div id="app-content" class="hidden">
+        
+        <!-- Header / Glassmorphism Navbar -->
+        <header class="navbar">
+            <div class="nav-container">
+                <!-- Logo -->
+                <a href="#home" class="logo-group" id="logo-btn">
+                    <div class="logo-halo-small">
+                        <div class="logo-disk-small"></div>
+                    </div>
+                    <span class="logo-text">AUREON</span>
+                </a>
+
+                <!-- Navigation Links -->
+                <nav class="nav-links">
+                    <a href="#home" class="nav-link active" data-target="home">Home</a>
+                    <a href="#discover" class="nav-link" data-target="discover">Discover</a>
+                    <a href="#editors-choice" class="nav-link" data-target="editors-choice">Editor's Choice</a>
+                    <a href="#scifi-universe" class="nav-link" data-target="scifi-universe">Sci-Fi Universe</a>
+                    <a href="#anime-universe" class="nav-link" data-target="anime-universe">Anime Universe</a>
+                    <a href="#hidden-gems" class="nav-link" data-target="hidden-gems">Hidden Gems</a>
+                    <a href="#vault" class="nav-link text-gold" data-target="vault">
+                        <i class="fa-solid fa-key-skeleton gold-icon"></i> My Private Vault
+                    </a>
+                </nav>
+
+                <!-- Search & Actions -->
+                <div class="nav-actions">
+                    <div class="search-container">
+                        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                        <input type="text" id="search-input" placeholder="Search cinematic masterpiece..." autocomplete="off">
+                        <div id="search-results" class="search-results-dropdown hidden"></div>
+                    </div>
+                    <button class="vault-indicator-btn" id="vault-nav-trigger" title="Unlock Watchlist">
+                        <i class="fa-solid fa-vault"></i>
+                        <span id="vault-count-badge" class="badge">0</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Fullscreen Hero Spotlight Section -->
+        <section id="home" class="hero-section">
+            <div class="hero-backdrop-container">
+                <div class="hero-backdrop active" id="hero-bg-layer" style="background-image: url('https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1925&auto=format&fit=crop');"></div>
+                <div class="hero-ambient-glow"></div>
+                <div class="hero-overlay"></div>
+            </div>
+            
+            <div class="hero-content">
+                <div class="hero-story">
+                    <div class="badge-row">
+                        <span class="spotlight-badge"><i class="fa-solid fa-star text-gold"></i> SPOTLIGHT EXCLUSIVE</span>
+                        <span id="hero-tag" class="category-badge">SCI-FI MASTERPIECE</span>
+                    </div>
+                    <h1 id="hero-title" class="hero-title">INTERSTELLAR</h1>
+                    <div class="hero-metadata">
+                        <span id="hero-rating" class="meta-rating"><i class="fa-solid fa-star text-gold"></i> 8.7</span>
+                        <span id="hero-year" class="meta-item">2014</span>
+                        <span id="hero-runtime" class="meta-item">169 min</span>
+                        <span id="hero-genre" class="meta-genre">Sci-Fi / Drama / Adventure</span>
+                    </div>
+                    <p id="hero-description" class="hero-synopsis">
+                        A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival. A gorgeous, mind-bending epic exploring time dilatation, love across dimensions, and gravity.
+                    </p>
+                    <div class="hero-actions-container">
+                        <div class="hero-actions">
+                            <button class="btn btn-primary" id="hero-watch-btn">
+                                <i class="fa-solid fa-play"></i> Watch Now
+                            </button>
+                            <button class="btn btn-secondary" id="hero-details-btn">
+                                <i class="fa-solid fa-circle-info"></i> Explore Details
+                            </button>
+                        </div>
+                        
+                        <!-- Premium Creator Signature -->
+                        <div class="hero-signature levitate-fast">
+                            <span class="sig-label">CURATION BY</span>
+                            <span class="sig-name">Jaswanth</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Spotlight Carousel Selectors -->
+                <div class="spotlight-selectors">
+                    <div class="selector-dot active" data-index="0" title="Interstellar">
+                        <span class="dot-number">01</span>
+                        <span class="dot-name">Interstellar</span>
+                    </div>
+                    <div class="selector-dot" data-index="1" title="Dune: Part Two">
+                        <span class="dot-number">02</span>
+                        <span class="dot-name">Dune: Part Two</span>
+                    </div>
+                    <div class="selector-dot" data-index="2" title="Blade Runner 2049">
+                        <span class="dot-number">03</span>
+                        <span class="dot-name">Blade Runner 2049</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Movie Catalog Dashboard -->
+        <main class="catalog-container">
+            
+            <!-- Trending This Week (Asymmetrical Premium Grid) -->
+            <section id="trending-section" class="catalog-section container reveal">
+                <div class="section-header-row">
+                    <h2 class="section-header-title">TRENDING IN THE UNIVERSE</h2>
+                    <div class="header-divider-line"></div>
+                </div>
+                <div class="trending-grid reveal-stagger" id="trending-grid">
+                    <!-- Dynamic rendering in JS: 1 giant featured billboard card + 3 regular staggered cards -->
+                </div>
+            </section>
+
+            <!-- Editor's Choice (Magazine Double Columns) -->
+            <section id="editors-choice" class="catalog-section container reveal">
+                <div class="section-header-row">
+                    <h2 class="section-header-title">EDITOR'S SELECTIONS</h2>
+                    <div class="header-divider-line"></div>
+                </div>
+                <div class="editors-magazine reveal-stagger" id="editors-magazine">
+                    <!-- Dynamic rendering in JS: side-by-side featured spotlight movie blocks with text layouts -->
+                </div>
+            </section>
+
+            <!-- Discover Section (Aureon Oracle Recommendation Quiz) -->
+            <section id="discover" class="catalog-section discover-section container reveal">
+                <div class="section-glow-background"></div>
+                <div class="section-header text-center">
+                    <div class="halo-icon-container">
+                        <div class="halo-ring-pulse"></div>
+                        <i class="fa-solid fa-wand-magic-sparkles oracle-icon-gold"></i>
+                    </div>
+                    <h2 class="section-title">THE AUREON ORACLE</h2>
+                    <p class="section-subtitle">Let our high-end discovery intelligence curate your evening projection</p>
+                </div>
+
+                <div class="oracle-quiz-card">
+                    <div class="quiz-step active" id="quiz-step-1">
+                        <h3 class="quiz-question">Select your cinematic state of mind:</h3>
+                        <div class="oracle-options-grid">
+                            <div class="oracle-opt-card" data-mood="cosmic">
+                                <div class="opt-icon"><i class="fa-solid fa-user-astronaut"></i></div>
+                                <h4>Cosmic Awe</h4>
+                                <p>Mind-bending concepts, existential wonders, and space journeys.</p>
+                            </div>
+                            <div class="oracle-opt-card" data-mood="suspense">
+                                <div class="opt-icon"><i class="fa-solid fa-mask"></i></div>
+                                <h4>Elegant Suspense</h4>
+                                <p>Intellectual thrillers, deep mysteries, and calculated tension.</p>
+                            </div>
+                            <div class="oracle-opt-card" data-mood="masterpiece">
+                                <div class="opt-icon"><i class="fa-solid fa-palette"></i></div>
+                                <h4>Visual Masterpiece</h4>
+                                <p>Stunning cinematography, master directing, and sensory design.</p>
+                            </div>
+                            <div class="oracle-opt-card" data-mood="gems">
+                                <div class="opt-icon"><i class="fa-solid fa-gem"></i></div>
+                                <h4>Hidden Philosophy</h4>
+                                <p>Independent dramas, profound screenplays, and complex layers.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="quiz-step" id="quiz-step-2">
+                        <h3 class="quiz-question">Choose your preferred cinematic era:</h3>
+                        <div class="oracle-options-grid grid-three">
+                            <div class="oracle-opt-card" data-era="golden">
+                                <div class="opt-icon"><i class="fa-solid fa-compact-disc"></i></div>
+                                <h4>Modern Classics</h4>
+                                <p>The highly defining works of the 1990s & 2000s.</p>
+                            </div>
+                            <div class="oracle-opt-card" data-era="contemporary">
+                                <div class="opt-icon"><i class="fa-solid fa-clapperboard"></i></div>
+                                <h4>Contemporary Era</h4>
+                                <p>Stellar masterpieces released between 2010 & 2020.</p>
+                            </div>
+                            <div class="oracle-opt-card" data-era="futuristic">
+                                <div class="opt-icon"><i class="fa-solid fa-rocket"></i></div>
+                                <h4>Future Visions</h4>
+                                <p>Recent projections shaping the future of filmmaking (2020+).</p>
+                            </div>
+                        </div>
+                        <button class="btn btn-secondary back-btn"><i class="fa-solid fa-arrow-left"></i> Back</button>
+                    </div>
+
+                    <!-- Oracle Loading Screen -->
+                    <div class="quiz-step text-center" id="quiz-loading">
+                        <div class="luxury-shimmer-ring">
+                            <div class="inner-shimmer"></div>
+                        </div>
+                        <h3 class="loading-text">ORACLE IS PROJECTION TUNING...</h3>
+                        <p class="section-subtitle">Evaluating visual assets and emotional frequencies</p>
+                    </div>
+
+                    <!-- Oracle Result Screen -->
+                    <div class="quiz-step" id="quiz-result">
+                        <div class="result-layout">
+                            <div class="result-poster-wrapper">
+                                <div class="result-poster-glow"></div>
+                                <img src="" alt="Recommended Film" class="result-poster" id="result-img" referrerpolicy="no-referrer">
+                            </div>
+                            <div class="result-info">
+                                <span class="gold-caps-label"><i class="fa-solid fa-crown text-gold"></i> THE ORACLE'S SELECTION</span>
+                                <h2 id="result-title" class="result-title">Movie Title</h2>
+                                <div class="result-meta">
+                                    <span id="result-rating" class="meta-rating"><i class="fa-solid fa-star"></i> 8.8</span>
+                                    <span id="result-year" class="meta-item">2021</span>
+                                    <span id="result-runtime" class="meta-item">155m</span>
+                                </div>
+                                <p id="result-desc" class="result-synopsis">Movie description goes here...</p>
+                                <div class="result-actions">
+                                    <button class="btn btn-primary" id="result-watch-btn"><i class="fa-solid fa-play"></i> Watch Now</button>
+                                    <button class="btn btn-secondary" id="result-details-btn"><i class="fa-solid fa-info-circle"></i> Explore Details</button>
+                                    <button class="btn btn-border-gold" id="result-retry-btn"><i class="fa-solid fa-rotate-right"></i> Recalibrate</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sci-Fi Universe (Hex/Offset Staggered Grid) -->
+            <section id="scifi-universe" class="catalog-section container reveal">
+                <div class="section-header-row">
+                    <h2 class="section-header-title">THE SCI-FI UNIVERSE</h2>
+                    <div class="header-divider-line"></div>
+                </div>
+                <div class="scifi-grid reveal-stagger" id="scifi-grid">
+                    <!-- Dynamic rendering: asymmetrical Sci-Fi cards with high atmospheric feel -->
+                </div>
+            </section>
+
+            <!-- Anime Universe (Offset/Staggered Premium Grid) -->
+            <section id="anime-universe" class="catalog-section container reveal">
+                <div class="section-header-row">
+                    <h2 class="section-header-title">ANIME UNIVERSE</h2>
+                    <div class="header-divider-line"></div>
+                </div>
+                <div class="anime-grid reveal-stagger" id="anime-grid">
+                    <!-- Dynamic rendering of anime cards -->
+                </div>
+            </section>
+
+            <!-- Top IMDb Picks (Staggered horizontal scrolling deck) -->
+            <section id="imdb-section" class="catalog-section container reveal">
+                <div class="section-header-row">
+                    <h2 class="section-header-title">TOP IMDB PROJECTIONS</h2>
+                    <div class="header-divider-line"></div>
+                </div>
+                <div class="horizontal-scroll-container">
+                    <button class="scroll-arrow prev-arrow" id="scroll-prev-imdb"><i class="fa-solid fa-chevron-left"></i></button>
+                    <div class="imdb-scroll-deck reveal-stagger" id="imdb-deck">
+                        <!-- Dynamic movie cards -->
+                    </div>
+                    <button class="scroll-arrow next-arrow" id="scroll-next-imdb"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+            </section>
+
+            <!-- Hidden Gems (Atmospheric Hover Disclosure Cards) -->
+            <section id="hidden-gems" class="catalog-section container reveal">
+                <div class="section-header-row">
+                    <h2 class="section-header-title">HIDDEN GEMS</h2>
+                    <div class="header-divider-line"></div>
+                </div>
+                <p class="section-desc-light">Mysterious cinema anomalies. Hover to project details and pierce the shadow.</p>
+                <div class="gems-grid reveal-stagger" id="gems-grid">
+                    <!-- Dynamic render of hidden cards which glow on hover -->
+                </div>
+            </section>
+
+            <!-- My Private Vault Section (Interactive Combination Dial Lock Panel) -->
+            <section id="vault" class="catalog-section vault-section container reveal">
+                <div class="section-glow-background"></div>
+                <div class="section-header text-center">
+                    <div class="halo-icon-container">
+                        <div class="halo-ring-pulse"></div>
+                        <i class="fa-solid fa-shield-halved oracle-icon-gold"></i>
+                    </div>
+                    <h2 class="section-title">MY PRIVATE VAULT</h2>
+                    <p class="section-subtitle">Unlock your private luxury projections watchlist</p>
+                </div>
+                
+                <div id="vault-lock-screen" class="vault-lock-screen">
+                    <div class="vault-dial-container">
+                        <h2 class="vault-heading-gold">SECURITY CODES REQUIRED</h2>
+                        <p class="vault-subheading">Rotate dial combo to lock security & reveal your Private Watchlist</p>
+                        
+                        <div class="gold-halo-ring-large"></div>
+                        <div class="vault-dial-inner">
+                            <div class="dial-ticks">
+                                <!-- JS will inject tick indicators -->
+                            </div>
+                            <div id="vault-dial-wheel" class="vault-dial-wheel">
+                                <div class="dial-gold-cap">
+                                    <div class="dial-notch"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="combination-indicators">
+                            <span class="combo-number" id="combo-num-1">--</span>
+                            <span class="combo-divider">•</span>
+                            <span class="combo-number" id="combo-num-2">--</span>
+                            <span class="combo-divider">•</span>
+                            <span class="combo-number" id="combo-num-3">--</span>
+                        </div>
+
+                        <div class="vault-status-panel">
+                            <div class="status-indicator">
+                                <span class="status-light-red" id="vault-lock-light"></span>
+                                <span id="vault-status-text" class="status-message">SECURED IN CRITICAL BLOCK</span>
+                            </div>
+                            <button class="btn btn-primary" id="auto-unlock-btn"><i class="fa-solid fa-unlock-keyhole"></i> Quick Bypass</button>
+                        </div>
+                        <div class="vault-instructions">
+                            <p><i class="fa-solid fa-circle-info"></i> Hint: Drag dial clockwise, or click numbers: <strong class="text-gold">30 - 70 - 15</strong> to disengage gears.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Opened Watchlist Vault Contents -->
+                <div id="vault-unlocked-screen" class="vault-unlocked-screen hidden">
+                    <div class="vault-unlocked-header">
+                        <div>
+                            <span class="gold-caps-label"><i class="fa-solid fa-shield-halved text-gold"></i> ACCESS GRANTED</span>
+                            <h2 class="unlocked-title">YOUR CINEMATIC VAULT</h2>
+                        </div>
+                        <button class="btn btn-border-gold" id="lock-vault-btn">
+                            <i class="fa-solid fa-lock"></i> Seal Vault
+                        </button>
+                    </div>
+                    
+                    <div id="vault-empty-message" class="vault-empty-message">
+                        <i class="fa-solid fa-folder-open empty-icon"></i>
+                        <h3>Your vault is currently empty.</h3>
+                        <p>Explore films, open details, and add projection tags to store items in this luxury archive.</p>
+                        <button class="btn btn-primary" id="vault-explore-btn">Go Explore</button>
+                    </div>
+
+                    <div class="vault-grid" id="vault-grid">
+                        <!-- Dynamic watchlist cards inside grid -->
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="footer-brand">
+                    <div class="logo-halo-small">
+                        <div class="logo-disk-small"></div>
+                    </div>
+                    <span class="logo-text">AUREON</span>
+                </div>
+                <p class="footer-tagline">Futuristic luxury movie discovery and projection recommendations.</p>
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#discover">Discover</a>
+                    <a href="#editors-choice">Editor's Choice</a>
+                    <a href="#scifi-universe">Sci-Fi Universe</a>
+                    <a href="#hidden-gems">Hidden Gems</a>
+                    <a href="#vault">Private Vault</a>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2026 AUREON Cinema Universe. Engineered for movie purists. Created by <span class="text-gold text-signature">Jaswanth</span>.</p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Cinematic Fullscreen Movie Details Modal -->
+        <div id="details-modal" class="modal">
+            <div class="modal-backdrop" id="modal-backdrop-layer"></div>
+            <button class="modal-close" id="modal-close-btn"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-wrapper">
+                <!-- Modal Body -->
+                <div class="modal-body" id="modal-body-content">
+                    <!-- Dynamic rendering in JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Video Trailer Overlay Modal -->
+        <div id="trailer-modal" class="trailer-modal">
+            <div class="trailer-backdrop" id="trailer-close-overlay"></div>
+            <div class="trailer-wrapper">
+                <button class="trailer-close" id="trailer-close-btn"><i class="fa-solid fa-xmark"></i></button>
+                <div class="trailer-video-box">
+                    <div id="trailer-player-container">
+                        <!-- Youtube Video iFrame injected by JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Application Script -->
+    <!-- Attempts to load app.js as an ES Module. If blocked by browser (such as file:// CORS under local double-click), the onerror handler dynamically injects app.js as a standard script to bypass CORS. -->
+    <script type="module" src="app.js" onerror="
+        console.warn('ES Module blocked or failed to load. Injecting fallback standard script.');
+        var fallback = document.createElement('script');
+        fallback.src = 'app.js';
+        document.body.appendChild(fallback);
+    "></script>
+
+    <!-- Safety Preloader Dismissal (Ensures loading screen never hangs) -->
+    <script>
+        setTimeout(function() {
+            var preloader = document.getElementById("preloader");
+            var content = document.getElementById("app-content");
+            if (preloader && !preloader.classList.contains("hidden")) {
+                console.warn("Safety preloader timeout triggered: dismissing preloader due to load hang.");
+                preloader.style.opacity = "0";
+                preloader.style.transform = "scale(1.05)";
+                setTimeout(function() {
+                    preloader.classList.add("hidden");
+                    if (content) {
+                        content.classList.remove("hidden");
+                        content.style.opacity = "1";
+                        content.style.animation = "fadeIn 1s forwards ease";
+                    }
+                }, 600);
+            }
+        }, 3000);
+    </script>
+
+    <!-- Premium Fullscreen Search Overlay -->
+    <div id="search-overlay" class="search-overlay">
+        <div class="search-overlay-backdrop" id="search-overlay-backdrop-btn"></div>
+        <div class="search-overlay-container">
+            <!-- Close Button -->
+            <button class="search-overlay-close" id="search-overlay-close-btn" title="Close Search">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            
+            <!-- Search Header -->
+            <div class="search-overlay-header">
+                <h2 class="search-overlay-title">CINEMATIC SEARCH</h2>
+                <p class="search-overlay-subtitle">Query our futuristic database of legendary projections</p>
+                
+                <div class="search-bar-wrapper">
+                    <i class="fa-solid fa-magnifying-glass search-bar-icon"></i>
+                    <input type="text" id="overlay-search-input" placeholder="Search title, genre, director, or cast..." autocomplete="off">
+                    <button class="search-clear-btn" id="overlay-search-clear" style="display:none;" title="Clear Search"><i class="fa-solid fa-circle-xmark"></i></button>
+                </div>
+                
+                <!-- Filters Panel -->
+                <div class="search-filters-panel">
+                    <!-- Genre Filters -->
+                    <div class="filter-group">
+                        <span class="filter-label">Genre</span>
+                        <div class="filter-options" id="filter-genres">
+                            <button class="filter-pill active" data-genre="all">All Genres</button>
+                            <button class="filter-pill" data-genre="Sci-Fi">Sci-Fi</button>
+                            <button class="filter-pill" data-genre="Action">Action</button>
+                            <button class="filter-pill" data-genre="Drama">Drama</button>
+                            <button class="filter-pill" data-genre="Adventure">Adventure</button>
+                            <button class="filter-pill" data-genre="Thriller">Thriller</button>
+                            <button class="filter-pill" data-genre="Comedy">Comedy</button>
+                            <button class="filter-pill" data-genre="Anime">Anime</button>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-row-secondary">
+                        <!-- Rating Filters -->
+                        <div class="filter-group">
+                            <span class="filter-label">Minimum Rating</span>
+                            <div class="filter-options" id="filter-ratings">
+                                <button class="filter-pill active" data-rating="all">Any Rating</button>
+                                <button class="filter-pill" data-rating="7.5">7.5+ <i class="fa-solid fa-star text-gold"></i></button>
+                                <button class="filter-pill" data-rating="8.0">8.0+ <i class="fa-solid fa-star text-gold"></i></button>
+                                <button class="filter-pill" data-rating="8.5">8.5+ <i class="fa-solid fa-star text-gold"></i></button>
+                                <button class="filter-pill" data-rating="9.0">9.0+ <i class="fa-solid fa-star text-gold"></i></button>
+                            </div>
+                        </div>
+                        
+                        <!-- Year Filters -->
+                        <div class="filter-group">
+                            <span class="filter-label">Release Era</span>
+                            <div class="filter-options" id="filter-years">
+                                <button class="filter-pill active" data-year="all">Any Era</button>
+                                <button class="filter-pill" data-year="2020">2020s</button>
+                                <button class="filter-pill" data-year="2010">2010s</button>
+                                <button class="filter-pill" data-year="2000">2000s</button>
+                                <button class="filter-pill" data-year="classic">90s & Older</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Search Content Grid -->
+            <div class="search-overlay-results">
+                <div class="suggestions-section" id="search-suggestions-box">
+                    <span class="gold-caps-label">QUICK RECOMMENDATIONS</span>
+                    <div class="suggestions-grid" id="search-suggestions-list">
+                        <!-- Dynamic suggested cards -->
+                    </div>
+                </div>
+                
+                <div class="results-section hidden" id="search-results-section">
+                    <div class="results-header-row">
+                        <span class="gold-caps-label" id="results-count-label">0 MATCHING PROJECTIONS</span>
+                        <button class="btn-text-gold" id="reset-all-filters-btn"><i class="fa-solid fa-rotate-left"></i> Clear Filters</button>
+                    </div>
+                    <div class="results-grid" id="overlay-results-grid">
+                        <!-- Matches rendered dynamically -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Cursor Elements -->
+    <div class="custom-cursor-dot"></div>
+    <div class="custom-cursor-outline"></div>
+</body>
+</html>

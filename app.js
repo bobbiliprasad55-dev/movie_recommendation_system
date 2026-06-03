@@ -21,7 +21,7 @@ const MOVIES_DATABASE = [
         description: "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival. A breathtaking, mind-bending epic exploring time dilatation, interstellar gravity, and love across dimensions.",
         poster: "https://upload.wikimedia.org/wikipedia/en/b/bc/Interstellar_film_poster.jpg",
         backdrop: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=1280&q=80&auto=format&fit=crop",
-        trailerId: "zSWdZVtXD7I",
+        trailerId: "zSWdZVtXT7E",
         tagline: "Mankind was born on Earth. It was never meant to die here.",
         isSpotlight: true,
         category: "scifi"
@@ -489,6 +489,9 @@ function initializeAureonApp() {
             safeInit("setupAureonOracle", () => setupAureonOracle(catalog));
         }
     }).catch(err => console.warn("Async catalog update ignored:", err));
+    
+    // Safety check to ensure trailer is closed and not active on load
+    safeInit("closeTrailerOnLoad", closeTrailer);
 }
 
 // Safely execute initialization regardless of when script is loaded relative to DOM
@@ -2051,6 +2054,8 @@ function setupModals(catalog) {
             closeTrailer();
         });
     }
+    // Close and hide the modal by default on page load
+    closeTrailer();
 }
 
 function openDetailsModal(movieId) {
@@ -2188,7 +2193,8 @@ function playTrailer(trailerId) {
     if (!trailerModal || !container) return;
 
     container.innerHTML = `
-        <iframe src="https://www.youtube.com/embed/${trailerId || 'zSWdZVtXD7I'}?autoplay=1&rel=0&modestbranding=1" 
+        <iframe src="https://www.youtube.com/embed/${trailerId || 'zSWdZVtXT7E'}?autoplay=1&rel=0&modestbranding=1" 
+                referrerpolicy="strict-origin-when-cross-origin"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                 allowfullscreen></iframe>
     `;
